@@ -75,6 +75,19 @@
 # Tier 2
 
 - type: technology
+  id: AdvencedThrusters
+  name: research-technology-advanced-thrusters
+  icon:
+    sprite: Structures/Shuttles/plasmathruster.rsi
+    state: base
+  discipline: Experimental
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - PlasmaThrusterMachineCircuitboard
+  - CombuctionChamberMachineCircuitboard
+
+- type: technology
   id: AdvancedParts
   name: research-technology-advanced-parts
   icon:

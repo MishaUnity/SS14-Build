@@ -8,7 +8,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Server.Shuttles.Components
 {
     [RegisterComponent, NetworkedComponent]
-    [Access(typeof(ThrusterSystem))]
+    //[Access(typeof(ThrusterSystem))]
     public sealed class ThrusterComponent : Component
     {
         /// <summary>
@@ -43,7 +43,17 @@ namespace Content.Server.Shuttles.Components
         /// <summary>
         /// This determines whether the thruster is actually enabled for the purposes of thrust
         /// </summary>
+        ///
+        [ViewVariables(VVAccess.ReadWrite)]
+        public bool InThrustArray;
         public bool IsOn;
+
+        [ViewVariables(VVAccess.ReadWrite), DataField("fuelType")]
+        public int FuelType = -1;
+        [ViewVariables(VVAccess.ReadWrite)]
+        public CombuctionComponent? ConnectedChamber;
+        [ViewVariables(VVAccess.ReadWrite)]
+        public bool HasFuel = true;
 
         // Need to serialize this because RefreshParts isn't called on Init and this will break post-mapinit maps!
         [ViewVariables(VVAccess.ReadWrite), DataField("thrust")]
